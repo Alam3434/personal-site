@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import StarBackground from "@/components/StarBackground";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
         <StarBackground />
         <div className="relative z-10">
+          <Navbar />
           {children}
         </div>
       </body>

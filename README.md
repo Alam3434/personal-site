@@ -1,37 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mohammad Alam's Portfolio Website 🚀
 
-## Getting Started
+Welcome to my personal portfolio website! This modern, responsive website showcases my projects and skills with a unique space-themed design featuring an animated star background.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Interactive Star Background**: Dynamic animated canvas with floating stars that creates an immersive space environment
+- **Responsive Design**: Seamless experience across all devices
+- **Dark Mode**: Space-themed dark mode with a beautiful star-filled aesthetic
+- **Modern UI**: Glass-morphism effects and smooth transitions
+- **Project Showcase**: Clean grid layout for featuring projects
+- **Contact Section**: Easy access to professional links and contact information
+
+## 🛠️ Built With
+
+- [Next.js 15.2](https://nextjs.org/) - React framework with App Router
+- [TypeScript](https://www.typescriptlang.org/) - For type safety
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Geist Font](https://vercel.com/font) - Modern, clean typography
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/personal-website.git
+   cd personal-website
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                # Next.js App Router pages
+├── components/         # Reusable components
+│   ├── Navbar.tsx     # Navigation component
+│   ├── ProjectCard.tsx # Project display component
+│   └── StarBackground.tsx # Animated space background
+└── styles/            # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Personal Information**
+   - Update contact information in `page.tsx`
+   - Modify the about section with your details
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Projects**
+   - Add your projects to the projects array in `page.tsx`
+   - Include project images in the `public` directory
 
-## Learn More
+3. **Star Animation**
+   - Adjust star properties in `StarBackground.tsx`:
+     - Number of stars
+     - Star sizes
+     - Animation speed
 
-To learn more about Next.js, take a look at the following resources:
+## 📱 Responsive Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The website is fully responsive and optimized for:
+- Desktop computers
+- Tablets
+- Mobile devices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
 
-## Deploy on Vercel
+This project is ready to be deployed on [Vercel](https://vercel.com) or your preferred hosting platform.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# personal-site
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contact
+
+Feel free to reach out if you have any questions or would like to connect!
+
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+- Email: your.email@example.com
+
