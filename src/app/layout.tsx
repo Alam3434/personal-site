@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import StarBackground from "@/components/StarBackground";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -27,13 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white bg-[#0f0f23] min-h-screen relative`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white bg-[#0f0f23] min-h-screen`}
       >
-        <StarBackground />
-        <div className="relative z-10">
-          <Navbar />
-          {children}
-        </div>
+        <Navbar />
+        {children}
       </body>
     </html>
   );
