@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="25" cy="25" r="23" stroke="url(#rainbow)" stroke-width="2" fill="none"/>
+  <defs>
+    <linearGradient id="rainbow" x1="0" y1="0" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FF0000"/>
+      <stop offset="33%" stop-color="#00FF00"/>
+      <stop offset="66%" stop-color="#0000FF"/>
+      <stop offset="100%" stop-color="#FF00FF"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -6,13 +6,13 @@ import Image from "next/image";
 import StarBackground from "@/components/StarBackground";
 
 export default function Home() {
-  const [matrixMode, setMatrixMode] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
+  const [isMatrixHovering, setIsMatrixHovering] = useState(false);
+  const [isCreativeHovering, setIsCreativeHovering] = useState(false);
 
   return (
     <>
       <div className="fixed inset-0">
-        <StarBackground matrixMode={isHovering} />
+        <StarBackground matrixMode={isMatrixHovering} creativeMode={isCreativeHovering} />
       </div>
       <main className="relative z-10 min-h-screen">
         {/* Hero Section */}
@@ -31,17 +31,31 @@ export default function Home() {
               >
                 View My Work
               </Link>
-              <div 
-                className="relative w-12 h-12 mx-4 cursor-pointer transition-transform duration-300 hover:scale-110"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-              >
-                <Image
-                  src="/circle.svg"
-                  alt="Matrix trigger"
-                  fill
-                  className={`transition-all duration-300 ${isHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
-                />
+              <div className="flex gap-4 items-center">
+                <div 
+                  className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
+                  onMouseEnter={() => setIsMatrixHovering(true)}
+                  onMouseLeave={() => setIsMatrixHovering(false)}
+                >
+                  <Image
+                    src="/circle.svg"
+                    alt="Matrix mode"
+                    fill
+                    className={`transition-all duration-300 ${isMatrixHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
+                  />
+                </div>
+                <div 
+                  className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
+                  onMouseEnter={() => setIsCreativeHovering(true)}
+                  onMouseLeave={() => setIsCreativeHovering(false)}
+                >
+                  <Image
+                    src="/creative-circle.svg"
+                    alt="Creative mode"
+                    fill
+                    className={`transition-all duration-300 ${isCreativeHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
+                  />
+                </div>
               </div>
               <Link
                 href="/contact"
