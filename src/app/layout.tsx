@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
+import StarBackground from "@/components/StarBackground";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,8 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white bg-[#0f0f23] min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased text-white bg-[#0f0f23] min-h-screen relative`}
       >
+        <div className="fixed inset-0 -z-10">
+          <StarBackground />
+        </div>
         <Navbar />
         {children}
       </body>

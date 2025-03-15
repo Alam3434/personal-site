@@ -2,9 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 export default function Navbar() {
   const pathname = usePathname();
+
+  const [isMatrixHovering, setIsMatrixHovering] = useState(false);
 
   const isActive = (path: string) => {
     return pathname === path;
@@ -24,12 +27,15 @@ export default function Navbar() {
         <div className="flex gap-6">
           {[
             { href: '/projects', label: 'Projects' },
+            { href: '/creative', label: 'Creative'},
             { href: '/about', label: 'About' },
             { href: '/contact', label: 'Contact' },
+            
           ].map(({ href, label }) => (
             <Link
               key={href}
               href={href}
+              
               className={`transition-colors ${isActive(href) 
                 ? 'text-blue-400' 
                 : 'text-gray-300 hover:text-blue-400'}`}

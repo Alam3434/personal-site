@@ -78,11 +78,6 @@ export default function StarBackground({ matrixMode = false, creativeMode = fals
       }
     };
 
-    // const getRandomShape = () => {
-    //   const shapes: ('circle' | 'square' | 'triangle' | 'star')[] = ['circle', 'square', 'triangle', 'star'];
-    //   return shapes[Math.floor(Math.random() * shapes.length)];
-    // };
-
     const particles = particlesRef.current;
 
     // Initialize or update particles
