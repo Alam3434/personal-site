@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import StarBackground from "@/components/StarBackground";
 import "./globals.css";
+// import { useState } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const [matrixMode, setMatrixMode] = useState(false);
   return (
     <html lang="en" className="dark">
       <body

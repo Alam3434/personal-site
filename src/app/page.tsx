@@ -4,15 +4,18 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import StarBackground from "@/components/StarBackground";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   const [isMatrixHovering, setIsMatrixHovering] = useState(false);
   const [isCreativeHovering, setIsCreativeHovering] = useState(false);
+  const [isMatrixClicked, setIsMatrixClicked] = useState(false);
+  const [isCreativeClicked, setIsCreativeClicked] = useState(false);
 
   return (
     <>
       <div className="fixed inset-0">
-        <StarBackground matrixMode={isMatrixHovering} creativeMode={isCreativeHovering} />
+        <StarBackground matrixMode={isMatrixHovering || isMatrixClicked} creativeMode={isCreativeHovering} />
       </div>
       <main className="relative z-10 min-h-screen">
         {/* Hero Section */}
@@ -36,6 +39,8 @@ export default function Home() {
                   className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
                   onMouseEnter={() => setIsMatrixHovering(true)}
                   onMouseLeave={() => setIsMatrixHovering(false)}
+                  onClick={() => setIsMatrixClicked(prev => !prev)}
+
                 >
                   <Image
                     src="/circle.svg"
@@ -48,6 +53,7 @@ export default function Home() {
                   className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
                   onMouseEnter={() => setIsCreativeHovering(true)}
                   onMouseLeave={() => setIsCreativeHovering(false)}
+                  onClick={() => setIsCreativeClicked(prev => !prev)}
                 >
                   <Image
                     src="/creative-circle.svg"

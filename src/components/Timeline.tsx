@@ -3,6 +3,7 @@ import React from 'react';
 interface Job {
   title: string;
   company: string;
+  logo: string;
   startDate: string; // Format: 'YYYY-MM-DD'
   endDate?: string; // Format: 'YYYY-MM-DD' or 'Present'
 }
@@ -18,12 +19,15 @@ const Timeline: React.FC<TimelineProps> = ({ jobs }) => {
         {jobs.map((job, index) => (
           <div key={index} className="flex items-start mb-4">
             <div className="absolute -left-3 w-6 h-6 bg-blue-500 rounded-full border-2 border-white" />
-            <div className="ml-4">
-              <h3 className="font-semibold">{job.title}</h3>
-              <p className="text-gray-600">{job.company}</p>
-              <p className="text-gray-500">
-                {job.startDate} - {job.endDate ? job.endDate : 'Present'}
-              </p>
+            <div className="ml-4 flex items-center">
+              <img src={job.logo} alt={`${job.company} logo`} className="w-8 h-8 mr-2" />
+              <div>
+                <h3 className="font-semibold">{job.title}</h3>
+                <p className="text-gray-600">{job.company}</p>
+                <p className="text-gray-500">
+                  {job.startDate} - {job.endDate ? job.endDate : 'Present'}
+                </p>
+              </div>
             </div>
           </div>
         ))}
