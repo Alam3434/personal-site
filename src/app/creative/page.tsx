@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import fs from "fs";
 import path from "path";
+import StarBackground from "@/components/StarBackground";
 
 // Function to get all image files from the Clothing directory
 function getClothingImages() {
@@ -18,6 +19,9 @@ export default function CreativePage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
+      <div className="fixed inset-0 z-0">
+        <StarBackground creativeMode={true} />
+      </div>
       <div className="z-10 max-w-7xl w-full">
         <h1 className="text-4xl font-bold mb-8">Creative Projects</h1>
         
