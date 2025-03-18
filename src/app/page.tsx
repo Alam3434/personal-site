@@ -1,16 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import StarBackground from "@/components/StarBackground";
-import Navbar from "@/components/Navbar";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { GLTFLoader } from "three-stdlib";
+import { useLoader } from "@react-three/fiber";
+import * as THREE from 'three';
+
+interface BrainModelProps {
+  onPointerOver: (event: any) => void;
+  onPointerOut: () => void;
+}
+
+function BrainModel({ onPointerOver, onPointerOut }: BrainModelProps) {
+  // Load GLB model
+  const gltf = useLoader(GLTFLoader, "/assets/brain_crush_brain_v2.glb");
+
+  return <primitive object={gltf.scene} scale={0.5} position={[0, 0, 0]} onPointerOver={onPointerOver} onPointerOut={onPointerOut}/>;
+}
 
 export default function Home() {
   const [isMatrixHovering, setIsMatrixHovering] = useState(false);
   const [isCreativeHovering, setIsCreativeHovering] = useState(false);
   const [isMatrixClicked, setIsMatrixClicked] = useState(false);
   const [isCreativeClicked, setIsCreativeClicked] = useState(false);
+  const [lightColor, setLightColor] = useState("white");
+  const [leftLightIntensity, setLeftLightIntensity] = useState(0);
+  const [rightLightIntensity, setRightLightIntensity] = useState(0);
+  const [directionalLight, setdirectionalLight] = useState(1);
+
+  const modelRef = useRef<THREE.Object3D>(null);
 
   return (
     <>
@@ -19,7 +41,7 @@ export default function Home() {
       </div>
       <main className="relative z-10 min-h-screen">
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center px-4">
+        <section className="min-h-screen flex items-center px-2">
           <div className="container mx-auto max-w-4xl">
             <h1 className="text-4xl sm:text-6xl font-bold mb-6">
               Hi, I'm Mohammad Alam 👋
@@ -71,6 +93,63 @@ export default function Home() {
               </Link>
             </div>
           </div>
+        </section>
+
+        {/* 3D Brain Model Section */}
+        <section className="min-h-screen flex justify-center items-center">
+        <Canvas
+            camera={{ position: [0, 3, 7], fov: 50 }}
+            style={{ width: "70vw", height: "70vh" }}
+          >
+            <ambientLight intensity={0.5} />
+            {/* Directional light */}
+            <directionalLight position={[0, 0, 5]} intensity={directionalLight} color={lightColor} />
+
+            {/* Left light */}
+            <directionalLight 
+              position={[-5, 0, 5]} 
+              intensity={leftLightIntensity} 
+              color={"red"} 
+            />
+
+            {/* Right light */}
+            <directionalLight 
+              position={[5, 0, 5]} 
+              intensity={rightLightIntensity} 
+              color={"blue"} 
+            />
+
+            <BrainModel 
+              onPointerOver={(e) => {
+                // Check mouse position relative to the model's position
+                const x = e.point.x;
+                if (x > 0) {
+                  // Right side of the model
+                  setdirectionalLight(0)
+                  setRightLightIntensity(2); // Turn off the right light
+                  setLeftLightIntensity(0); // Keep the left light on
+                } else {
+                  // Left side of the model
+                  setdirectionalLight(0)
+                  setLeftLightIntensity(2); // Turn off the left light
+                  setRightLightIntensity(0); // Keep the right light on
+                }
+              }}
+              onPointerOut={() => {
+                // Reset lights when pointer leaves
+                setLeftLightIntensity(0);
+                setRightLightIntensity(0);
+                setdirectionalLight(1)
+              }}
+            />
+
+            <OrbitControls
+              target={[0, 0, 0]} // Ensure target is at model's center
+              minDistance={2} // Set minimum zoom distance
+              maxDistance={10} // Set maximum zoom distance
+              enableZoom={true}
+            />
+          </Canvas>
         </section>
       </main>
 
