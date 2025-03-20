@@ -22,7 +22,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
     technologies,
   }) => {
     return (
-    <div className="bg-black text-white p-5 rounded-lg shadow-md mb-6 w-full md:w-4/5 lg:w-3/4 xl:w-3/4 border border-green-100" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+    <div className="bg-black text-white p-5 rounded-lg shadow-md mb-6 w-full md:w-4/5 lg:w-3/4 xl:w-3/4 border border-green-100" style={{ backgroundColor: 'rgb(15, 15, 1)' }}>
     <div className="flex items-center">
           <img src={logo} alt={`${company} logo`} className="w-12 h-12 mr-6" />
           <div>
@@ -33,7 +33,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
             </p>
           </div>
         </div>
-        <ul className=" bg-black mt-4 list-disc list-inside p-4 mb-2">
+        <ul className=" mt-4 list-disc list-inside p-4 mb-2">
           {responsibilities.map((item, index) => (
             <li key={index} className="text-gray-300 text-md">{item}</li>
           ))}

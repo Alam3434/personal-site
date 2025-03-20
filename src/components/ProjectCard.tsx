@@ -21,7 +21,7 @@ export default function ProjectCard({
   githubUrl,
 }: ProjectCardProps) {
   return (
-    <div className="group rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 transition-all hover:shadow-lg">
+    <div className="group rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-all hover:shadow-lg" style={{ backgroundColor: 'rgba(15, 15, 1, 1)' }}>
       <div className="relative h-48 w-full overflow-hidden">
         <Image
           src={imageUrl}
@@ -37,7 +37,7 @@ export default function ProjectCard({
           {technologies.map((tech) => (
             <span
               key={tech}
-              className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800"
+              className="px-3 py-1 text-sm rounded-full bg-green-100 dark:bg-green-800"
             >
               {tech}
             </span>

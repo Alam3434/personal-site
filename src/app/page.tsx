@@ -9,17 +9,31 @@ import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three-stdlib";
 import { useLoader } from "@react-three/fiber";
 import * as THREE from 'three';
+import { useRouter } from 'next/navigation';
 
 interface BrainModelProps {
-  onPointerOver: (event: any) => void;
+  onPointerMove: (event: any) => void;
   onPointerOut: () => void;
+  onDoubleClick: (event: any) => void;
+  cursorStyle?: string;
 }
 
-function BrainModel({ onPointerOver, onPointerOut }: BrainModelProps) {
-  // Load GLB model
-  const gltf = useLoader(GLTFLoader, "/assets/brain_crush_brain_v2.glb");
 
-  return <primitive object={gltf.scene} scale={0.5} position={[0, 0, 0]} onPointerOver={onPointerOver} onPointerOut={onPointerOut}/>;
+function BrainModel({ onPointerMove, onPointerOut, onDoubleClick, cursorStyle }: BrainModelProps) {
+  // Load GLB model
+  const gltf = useLoader(GLTFLoader, "/assets/brain_3d.glb");
+
+  return (
+    <primitive 
+      object={gltf.scene} 
+      scale={6} 
+      position={[0, 0, 0]} 
+      onPointerMove={onPointerMove} 
+      onPointerOut={onPointerOut} 
+      onDoubleClick={onDoubleClick}
+      style={{ cursor: cursorStyle }}
+    />
+  );
 }
 
 export default function Home() {
@@ -28,28 +42,41 @@ export default function Home() {
   const [isMatrixClicked, setIsMatrixClicked] = useState(false);
   const [isCreativeClicked, setIsCreativeClicked] = useState(false);
   const [lightColor, setLightColor] = useState("white");
-  const [leftLightIntensity, setLeftLightIntensity] = useState(0);
-  const [rightLightIntensity, setRightLightIntensity] = useState(0);
-  const [directionalLight, setdirectionalLight] = useState(1);
+  const [leftLightIntensity, setLeftLightIntensity] = useState(3);
+  const [rightLightIntensity, setRightLightIntensity] = useState(3);
+  const [directionalLight, setdirectionalLight] = useState(0);
 
-  const modelRef = useRef<THREE.Object3D>(null);
+  const [cursor, setCursor] = useState<string>("auto");
+
+  const router = useRouter(); // Hook to handle routing
+
+  const handleClick = (e: any) => {
+    const clickedPosition = e.point.x;
+    if (clickedPosition > 0) {
+      // Redirect to the Creative page
+      router.push("/projects");
+    } else {
+      // Redirect to the Projects page
+      router.push("/creative");
+    }
+  };
 
   return (
     <>
       <div className="fixed inset-0">
         <StarBackground matrixMode={isMatrixHovering || isMatrixClicked} creativeMode={isCreativeHovering} />
       </div>
-      <main className="relative z-10 min-h-screen">
-        {/* Hero Section */}
-        <section className="min-h-screen flex items-center px-2">
+      <main className="relative z-10">
+  {/* Hero Section */}
+        <section className="h-screen flex items-center px-2 mb-0"> {/* Adjust margin-bottom */}
           <div className="container mx-auto max-w-4xl">
-            <h1 className="text-4xl sm:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-6xl font-bold mb-0">
               Hi, I'm Mohammad Alam 👋
             </h1>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl">
+            <p className="text-xl text-gray-300 mb-0 max-w-2xl">
               A software engineer passionate about building scalable and efficient web applications.
             </p>
-            <div className="flex gap-4 flex-wrap">
+            {/* <div className="flex gap-4 flex-wrap">
               <Link
                 href="/projects"
                 className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
@@ -57,12 +84,11 @@ export default function Home() {
                 View My Work
               </Link>
               <div className="flex gap-4 items-center">
-                <div 
+                <div
                   className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
                   onMouseEnter={() => setIsMatrixHovering(true)}
                   onMouseLeave={() => setIsMatrixHovering(false)}
                   onClick={() => setIsMatrixClicked(prev => !prev)}
-
                 >
                   <Image
                     src="/circle.svg"
@@ -71,7 +97,7 @@ export default function Home() {
                     className={`transition-all duration-300 ${isMatrixHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
                   />
                 </div>
-                <div 
+                <div
                   className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
                   onMouseEnter={() => setIsCreativeHovering(true)}
                   onMouseLeave={() => setIsCreativeHovering(false)}
@@ -91,17 +117,17 @@ export default function Home() {
               >
                 Contact Me
               </Link>
-            </div>
+            </div> */}
           </div>
         </section>
 
         {/* 3D Brain Model Section */}
-        <section className="min-h-screen flex justify-center items-center">
-        <Canvas
-            camera={{ position: [0, 3, 7], fov: 50 }}
-            style={{ width: "70vw", height: "70vh" }}
+        <section className="h-screen flex justify-center items-center m-0 p-0"> {/* Removed margin and padding */}
+          <Canvas
+            camera={{ position: [0, 3, 10], fov: 50 }}
+            style={{ width: "70vw", height: "120vh", cursor: cursor }}
           >
-            <ambientLight intensity={0.5} />
+            <ambientLight intensity={1} />
             {/* Directional light */}
             <directionalLight position={[0, 0, 5]} intensity={directionalLight} color={lightColor} />
 
@@ -111,45 +137,70 @@ export default function Home() {
               intensity={leftLightIntensity} 
               color={"red"} 
             />
-
+           
             {/* Right light */}
             <directionalLight 
               position={[5, 0, 5]} 
               intensity={rightLightIntensity} 
-              color={"blue"} 
+              color={"green"} 
             />
 
             <BrainModel 
-              onPointerOver={(e) => {
-                // Check mouse position relative to the model's position
+              onPointerMove={(e) => {
                 const x = e.point.x;
+                setCursor("pointer"); // Change cursor to pointer on hover
+                setdirectionalLight(0.5);
                 if (x > 0) {
-                  // Right side of the model
-                  setdirectionalLight(0)
-                  setRightLightIntensity(2); // Turn off the right light
-                  setLeftLightIntensity(0); // Keep the left light on
+                  setRightLightIntensity(3); 
+                  setIsMatrixHovering(true);
+                  setLeftLightIntensity(0); // Reset left light intensity
+                  setIsCreativeHovering(false); // Reset creative hover state
                 } else {
-                  // Left side of the model
-                  setdirectionalLight(0)
-                  setLeftLightIntensity(2); // Turn off the left light
-                  setRightLightIntensity(0); // Keep the right light on
+                  setLeftLightIntensity(3);
+                  setIsCreativeHovering(true);
+                  setRightLightIntensity(0); // Reset right light intensity
+                  setIsMatrixHovering(false); // Reset matrix hover state
                 }
               }}
               onPointerOut={() => {
-                // Reset lights when pointer leaves
-                setLeftLightIntensity(0);
-                setRightLightIntensity(0);
-                setdirectionalLight(1)
+                setCursor("auto"); // Reset cursor to default
+                setLeftLightIntensity(3);
+                setRightLightIntensity(3);
+                setdirectionalLight(1);
+                setIsCreativeHovering(false);
+                setIsMatrixHovering(false);
               }}
+              onDoubleClick= {(e) => {handleClick(e)}}
+              cursorStyle= "pointer"
             />
 
             <OrbitControls
-              target={[0, 0, 0]} // Ensure target is at model's center
-              minDistance={2} // Set minimum zoom distance
-              maxDistance={10} // Set maximum zoom distance
-              enableZoom={true}
+              target={[0, 0, 0]}
+              minDistance={2}
+              maxDistance={10}
+              enableZoom={false}
             />
           </Canvas>
+          <div
+            className="absolute left-1/9 top-1/2 transform -translate-y-1/2 text-white text-xl font-medium tracking-wide"
+            style={{ pointerEvents: "none"}}
+          >
+            {isCreativeHovering ? (
+              <p className="bg-black/60 p-4 rounded-lg shadow-xl max-w-xs whitespace-normal text-center font-bold">
+                Double Click to view Creative Experiences
+              </p>
+            ) : null}
+          </div>
+          <div
+            className="absolute right-1/9 top-1/2 transform -translate-y-1/2 text-white text-xl font-medium tracking-wide"
+            style={{ pointerEvents: "none", marginRight: "5px" }}
+          >
+            {isMatrixHovering ? (
+              <p className="bg-black/60 p-4 rounded-lg shadow-xl max-w-xs whitespace-normal text-center font-bold">
+                Double Click to view Technical Experiences
+              </p>
+            ) : null}
+          </div>
         </section>
       </main>
 

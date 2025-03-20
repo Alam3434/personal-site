@@ -1,34 +1,48 @@
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import StarBackground from "@/components/StarBackground";
-import Timeline from '@/components/Timeline';
+import ProjectModal from '@/components/ProjectModal'; // Import the modal component
 import ExperienceCard from '@/components/ExperienceCard';
+// import React, { useState } from 'react';
+
 
 const projects = [
   {
-    title: "Project 1",
-    description: "Description of your first project",
-    imageUrl: "/project1.jpg",
-    technologies: ["Next.js", "React", "TypeScript"],
-    projectUrl: "https://project1.com",
+    title: "Shcoota App",
+    description: "Developed a feature-rich iOS app for renting electric scooters, utilizing SwiftUI, MapKit, and CoreLocation.Implemented real-time location tracking, enabling users to find and book scooters through a dynamic map interface. Integrated Firebase for backend services, user authentication, real-time database, and cloud functions for logic. Managed payment processing with Stripe integration, ensuring secure and efficient transaction management.",
+    imageUrl: "/assets/Projects/SchootaApp.png",
+    technologies: ["Swift", "Firebase", "MapKit", "CoreLocation", "Stripe"],
+    githubUrl: "https://github.com/Alam3434/Shcoota",
+  },
+  {
+    title: "Pintos Operating System",
+    description: "Constructed the Pintos OS using C and x86, implementing thread management, user programs and virtual memory.Implemented priority scheduling and synchronization algos to boost system performance and resource management.Designed and integrated a virtual memory system for efficient user process handling and memory allocation.Enhanced the file system, adding extensible files, subdirectories, and buffer caching to optimize I/O operations.",
+    imageUrl: "/assets/Projects/pintos.eecda492.png",
+    technologies: ["C", "x86"],
     githubUrl: "https://github.com/yourusername/project1",
   },
   {
-    title: "Project 2",
-    description: "Description of your first project",
-    imageUrl: "/project1.jpg",
-    technologies: ["Next.js", "React", "TypeScript"],
-    projectUrl: "https://project1.com",
-    githubUrl: "https://github.com/yourusername/project1",
+    title: "NASA mission simulations",
+    description: "Developed interactive 3D animations of spacecraft trajectories with NASA’s Spice-enhanced Cosmographia, enhancing real-time visualizations, precise mission simulations for aerospace evaluations and external education.",
+    imageUrl: "/assets/Projects/Cosmographia.png",
+    technologies: ["Cosmographia", "Python"],
+    projectUrl: "https://www.youtube.com/watch?v=4SwkXqHudc8"
   },
   {
-    title: "Project 3",
-    description: "Description of your first project",
-    imageUrl: "/project1.jpg",
-    technologies: ["Next.js", "React", "TypeScript"],
-    projectUrl: "https://project1.com",
-    githubUrl: "https://github.com/yourusername/project1",
+    title: "Secure File Sharing",
+    description: "Developed secure file sharing service in Golang, utilizing encryption, hashing, MACs, etc. Designed stateless system that ensures confidentiality and integrity of data in unsecured data stores.",
+    imageUrl: "/assets/Projects/logo.png",
+    technologies: ["Go Programming Language"],
+    githubUrl: "https://github.com/cs161-students/sp24-proj2-chow-mein",
   },
+  {
+    title: "X-Wing vs Death Star - 3D Space Shooter",
+    description: "A 3D space shooter game where players pilot an X-Wing fighter to destroy the Death Star, inspired by Star Wars: Episode IV. Built using Three.js, the game features smooth flight mechanics, laser combat, and a dynamic 3D environment. Engage in thrilling space battles with realistic physics and basic explosions.",
+    imageUrl: "/assets/Projects/3dSpaceGame.png",
+    technologies: ["Three.js", "JavaScript", "HTML5",  "CSS3"],
+    githubUrl: "https://github.com/Alam3434/3D-SpaceGame",
+  },
+  
   // Add more projects here
 ];
 
@@ -104,6 +118,21 @@ const experiences = [
   
   // Add more experiences as needed
 ];
+
+
+// Assuming you have a projects array defined
+// const [selectedProject, setSelectedProject] = useState(null);
+// const [isModalOpen, setIsModalOpen] = useState(false);
+
+// const openModal = (project: any) => {
+//   setSelectedProject(project);
+//   setIsModalOpen(true);
+// };
+
+// const closeModal = () => {
+//   setIsModalOpen(false);
+//   setSelectedProject(null);
+// };
 
 
 export default function ProjectsPage() {
