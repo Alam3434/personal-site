@@ -90,7 +90,7 @@ This project is open source and available under the MIT License.
 
 Feel free to reach out if you have any questions or would like to connect!
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@Alam3434](https://github.com/Alam3434)
+- LinkedIn: [Mohammad Alam](https://www.linkedin.com/in/mohammad-alam-a4a787238/)
+- Email: aamiyo2003@gmail.com
 
