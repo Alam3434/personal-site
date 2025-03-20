@@ -7,6 +7,8 @@ import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three-stdlib";
 import { useLoader } from "@react-three/fiber";
 import { useRouter } from 'next/navigation';
+import * as THREE from 'three';  // Import THREE for access to THREE.Event
+
 
 
 interface BrainModelProps {
@@ -38,7 +40,6 @@ function BrainModel({ onPointerMove, onPointerOut, onDoubleClick, cursorStyle }:
 export default function Home() {
   const [isMatrixHovering, setIsMatrixHovering] = useState(false);
   const [isCreativeHovering, setIsCreativeHovering] = useState(false);
-  const [lightColor, setLightColor] = useState("white");
   const [leftLightIntensity, setLeftLightIntensity] = useState(2);
   const [rightLightIntensity, setRightLightIntensity] = useState(2);
   const [directionalLight, setdirectionalLight] = useState(0.5);
@@ -47,8 +48,8 @@ export default function Home() {
 
   const router = useRouter(); // Hook to handle routing
 
-  const handleClick = (e: any) => {
-    const clickedPosition = e.point.x;
+  const handleClick = (e: THREE.Event) => {
+    const clickedPosition = (e as any).ray?.origin.x;
     if (clickedPosition > 0) {
       // Redirect to the Creative page
       router.push("/projects");
@@ -84,7 +85,7 @@ export default function Home() {
           >
             <ambientLight intensity={1} />
             {/* Directional light */}
-            <directionalLight position={[0, 0, 5]} intensity={directionalLight} color={lightColor} />
+            <directionalLight position={[0, 0, 5]} intensity={directionalLight} color={"white"} />
 
             {/* Left light */}
             <directionalLight 
