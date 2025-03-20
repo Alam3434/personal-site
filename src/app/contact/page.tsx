@@ -5,7 +5,7 @@ export default function ContactPage() {
         <h1 className="text-4xl font-bold mb-8">Get in Touch</h1>
         <div className="space-y-8">
           <p className="text-lg">
-            I'm always open to new opportunities and collaborations.
+            I&apos;m always open to new opportunities and collaborations.
             Feel free to reach out through any of the following channels!
           </p>
 

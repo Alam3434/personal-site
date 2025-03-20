@@ -5,9 +5,9 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold mb-8">About Me</h1>
         <div className="prose dark:prose-invert max-w-none">
           <p className="text-lg mb-4 bg-black text-white rounded-lg p-4">
-          Hi, I'm Mohammad Alam, a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. 
+          Hi, I&apos;m Mohammad Alam, a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. 
           I specialize in building scalable, efficient systems and love solving complex problems through code. 
-          When I'm not immersed in software development, I love to channel my creativity into designing clothes and art. I believe that the intersection of technology and creativity is where innovation thrives, and I strive to blend both in every project I take on.
+          When I&apos;m not immersed in software development, I love to channel my creativity into designing clothes and art. I believe that the intersection of technology and creativity is where innovation thrives, and I strive to blend both in every project I take on.
           </p>
           
           <h2 className="text-2xl font-bold mt-8 mb-4">Technical Skills</h2>
@@ -46,7 +46,7 @@ export default function AboutPage() {
               className="w-24 h-24 rounded-lg mr-4" // Adjust size and margin as needed
             />
             <div>
-              <h3 className="text-xl font-semibold">Bachelor's in Computer Science</h3>
+              <h3 className="text-xl font-semibold">Bachelor&apos;s in Computer Science</h3>
               <p className="text-gray-400">University of California- Berkeley • 2025</p>
               <h4 className="text-lg font-semibold mt-2">Relevant Coursework</h4>
               <ul className="list-disc list-inside">

@@ -1,7 +1,5 @@
-import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
 import StarBackground from "@/components/StarBackground";
-import ProjectModal from '@/components/ProjectModal'; // Import the modal component
 import ExperienceCard from '@/components/ExperienceCard';
 // import React, { useState } from 'react';
 
