@@ -17,14 +17,14 @@ export default function Navbar() {
         <Link 
           href="/" 
           className={`text-xl font-bold transition-colors ${isActive('/') 
-            ? 'text-blue-400' 
-            : 'text-white hover:text-blue-400'}`}
+            ? 'text-green-400' 
+            : 'text-white hover:text-green-400'}`}
         >
           MA
         </Link>
         <div className="flex gap-6">
           {[
-            { href: '/projects', label: 'Projects'},
+            { href: '/projects', label: 'Technical'},
             { href: '/creative', label: 'Creative'},
             { href: '/about', label: 'About' },
             { href: '/contact', label: 'Contact' },
@@ -33,8 +33,8 @@ export default function Navbar() {
               key={href}
               href={href}
               className={`transition-colors ${isActive(href) 
-                ? 'text-blue-400' 
-                : 'text-gray-300 hover:text-blue-400'}`}
+                ? 'text-green-400' 
+                : 'text-gray-300 hover:text-green-400'}`}
             >
               {label}
             </Link>

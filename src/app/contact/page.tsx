@@ -17,7 +17,7 @@ export default function ContactPage() {
                 href="mailto:your.email@example.com"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
               >
-                your.email@example.com
+                aamiyo2003@gmail.com
               </a>
             </div>
 
@@ -26,7 +26,7 @@ export default function ContactPage() {
               <h2 className="text-xl font-semibold mb-4">Social Media</h2>
               <div className="space-y-3">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/Alam3434"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-blue-400 hover:text-blue-300 transition-colors"
@@ -34,7 +34,7 @@ export default function ContactPage() {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://www.linkedin.com/in/mohammad-alam-a4a787238/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block text-blue-400 hover:text-blue-300 transition-colors"

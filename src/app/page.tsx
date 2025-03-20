@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from "react";
 import StarBackground from "@/components/StarBackground";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three-stdlib";
 import { useLoader } from "@react-three/fiber";
-import * as THREE from 'three';
 import { useRouter } from 'next/navigation';
+
 
 interface BrainModelProps {
   onPointerMove: (event: any) => void;
@@ -23,12 +21,13 @@ function BrainModel({ onPointerMove, onPointerOut, onDoubleClick, cursorStyle }:
   // Load GLB model
   const gltf = useLoader(GLTFLoader, "/assets/brain_3d.glb");
 
+
   return (
     <primitive 
       object={gltf.scene} 
       scale={6} 
       position={[0, 0, 0]} 
-      onPointerMove={onPointerMove} 
+      onPointerMove={onPointerMove}
       onPointerOut={onPointerOut} 
       onDoubleClick={onDoubleClick}
       style={{ cursor: cursorStyle }}
@@ -39,12 +38,10 @@ function BrainModel({ onPointerMove, onPointerOut, onDoubleClick, cursorStyle }:
 export default function Home() {
   const [isMatrixHovering, setIsMatrixHovering] = useState(false);
   const [isCreativeHovering, setIsCreativeHovering] = useState(false);
-  const [isMatrixClicked, setIsMatrixClicked] = useState(false);
-  const [isCreativeClicked, setIsCreativeClicked] = useState(false);
   const [lightColor, setLightColor] = useState("white");
-  const [leftLightIntensity, setLeftLightIntensity] = useState(3);
-  const [rightLightIntensity, setRightLightIntensity] = useState(3);
-  const [directionalLight, setdirectionalLight] = useState(0);
+  const [leftLightIntensity, setLeftLightIntensity] = useState(2);
+  const [rightLightIntensity, setRightLightIntensity] = useState(2);
+  const [directionalLight, setdirectionalLight] = useState(0.5);
 
   const [cursor, setCursor] = useState<string>("auto");
 
@@ -64,7 +61,7 @@ export default function Home() {
   return (
     <>
       <div className="fixed inset-0">
-        <StarBackground matrixMode={isMatrixHovering || isMatrixClicked} creativeMode={isCreativeHovering} />
+        <StarBackground matrixMode={isMatrixHovering} creativeMode={isCreativeHovering} />
       </div>
       <main className="relative z-10">
   {/* Hero Section */}
@@ -74,50 +71,8 @@ export default function Home() {
               Hi, I'm Mohammad Alam 👋
             </h1>
             <p className="text-xl text-gray-300 mb-0 max-w-2xl">
-              A software engineer passionate about building scalable and efficient web applications.
+            I&apos;m a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. On the side I also love to make clothing designs and Art.
             </p>
-            {/* <div className="flex gap-4 flex-wrap">
-              <Link
-                href="/projects"
-                className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors"
-              >
-                View My Work
-              </Link>
-              <div className="flex gap-4 items-center">
-                <div
-                  className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
-                  onMouseEnter={() => setIsMatrixHovering(true)}
-                  onMouseLeave={() => setIsMatrixHovering(false)}
-                  onClick={() => setIsMatrixClicked(prev => !prev)}
-                >
-                  <Image
-                    src="/circle.svg"
-                    alt="Matrix mode"
-                    fill
-                    className={`transition-all duration-300 ${isMatrixHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
-                  />
-                </div>
-                <div
-                  className="relative w-12 h-12 cursor-pointer transition-transform duration-300 hover:scale-110"
-                  onMouseEnter={() => setIsCreativeHovering(true)}
-                  onMouseLeave={() => setIsCreativeHovering(false)}
-                  onClick={() => setIsCreativeClicked(prev => !prev)}
-                >
-                  <Image
-                    src="/creative-circle.svg"
-                    alt="Creative mode"
-                    fill
-                    className={`transition-all duration-300 ${isCreativeHovering ? 'opacity-100 rotate-180' : 'opacity-70'}`}
-                  />
-                </div>
-              </div>
-              <Link
-                href="/contact"
-                className="border border-white/10 text-white px-6 py-3 rounded-lg hover:bg-white/5 transition-colors"
-              >
-                Contact Me
-              </Link>
-            </div> */}
           </div>
         </section>
 
@@ -166,7 +121,7 @@ export default function Home() {
                 setCursor("auto"); // Reset cursor to default
                 setLeftLightIntensity(3);
                 setRightLightIntensity(3);
-                setdirectionalLight(1);
+                setdirectionalLight(0.5);
                 setIsCreativeHovering(false);
                 setIsMatrixHovering(false);
               }}
@@ -186,17 +141,21 @@ export default function Home() {
             style={{ pointerEvents: "none"}}
           >
             {isCreativeHovering ? (
-              <p className="bg-black/60 p-4 rounded-lg shadow-xl max-w-xs whitespace-normal text-center font-bold">
+              <p className="relative bg-gradient-to-r from-red-700 to-black text-white p-6 rounded-2xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-2xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer overflow-hidden">
                 Double Click to view Creative Experiences
               </p>
             ) : null}
           </div>
           <div
             className="absolute right-1/9 top-1/2 transform -translate-y-1/2 text-white text-xl font-medium tracking-wide"
-            style={{ pointerEvents: "none", marginRight: "5px" }}
+            style={{ pointerEvents: "none" }}
           >
             {isMatrixHovering ? (
-              <p className="bg-black/60 p-4 rounded-lg shadow-xl max-w-xs whitespace-normal text-center font-bold">
+              // <p className="bg-gradient-to-r from-black to-green-800 text-white p-6 rounded-2xl shadow-2xl transform transition-all duration-300 max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide hover:scale-105 hover:shadow-lg cursor-pointer">
+              // Double Click to view Technical Experiences
+              // </p>
+              <p className="relative bg-gradient-to-r from-black to-green-700 text-white p-6 rounded-2xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-2xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl cursor-pointer overflow-hidden">
+                {/* <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-teal-500 to-green-500 opacity-30 blur-xl animate-pulse"></span> */}
                 Double Click to view Technical Experiences
               </p>
             ) : null}
