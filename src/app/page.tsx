@@ -12,9 +12,9 @@ import * as THREE from 'three';  // Import THREE for access to THREE.Event
 
 
 interface BrainModelProps {
-  onPointerMove: (event: any) => void;
+  onPointerMove: (event: PointerEvent) => void;
   onPointerOut: () => void;
-  onDoubleClick: (event: any) => void;
+  onDoubleClick: (event: MouseEvent) => void;
   cursorStyle?: string;
 }
 
@@ -48,9 +48,11 @@ export default function Home() {
 
   const router = useRouter(); // Hook to handle routing
 
-  const handleClick = (e: THREE.Event) => {
-    const clickedPosition = (e as any).ray?.origin.x;
-    if (clickedPosition > 0) {
+  const handleClick = (e: PointerEvent) => {
+    const clickedPosition = e.clientX;
+    const screenWidth = window.innerWidth; // Or use a specific container width
+    const midPoint = screenWidth / 2;
+    if (clickedPosition > midPoint) {
       // Redirect to the Creative page
       router.push("/projects");
     } else {
@@ -69,7 +71,7 @@ export default function Home() {
         <section className="h-screen flex items-center px-2 mb-0"> {/* Adjust margin-bottom */}
           <div className="container mx-auto max-w-4xl">
             <h1 className="text-4xl sm:text-6xl font-bold mb-0">
-              Hi, I'm Mohammad Alam 👋
+              Hi, I&apos;m Mohammad Alam 👋
             </h1>
             <p className="text-xl text-gray-300 mb-0 max-w-2xl">
             I&apos;m a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. On the side I also love to make clothing designs and Art.
@@ -103,10 +105,12 @@ export default function Home() {
 
             <BrainModel 
               onPointerMove={(e) => {
-                const x = e.point.x;
+                const x = e.clientX; // Accessing clientX instead of point.x
+                const screenWidth = window.innerWidth; // Or use a specific container width
+                const midPoint = screenWidth / 2;
                 setCursor("pointer"); // Change cursor to pointer on hover
                 setdirectionalLight(0.5);
-                if (x > 0) {
+                if (x > midPoint) {
                   setRightLightIntensity(3); 
                   setIsMatrixHovering(true);
                   setLeftLightIntensity(0); // Reset left light intensity
