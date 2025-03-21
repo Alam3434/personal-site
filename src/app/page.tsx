@@ -73,10 +73,25 @@ export default function Home() {
               Hi, I&apos;m Mohammad Alam 👋
             </h1>
             <p className="text-xl text-gray-300 mb-0 max-w-2xl">
-            I&apos;m a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. On the side I also love to make clothing designs and Art.
+              I&apos;m a Senior at UC Berkeley majoring in Computer Science with a passion for Software Engineering. On the side I also love to make clothing designs and Art.
             </p>
+            <div className="flex justify-center my-4"> {/* Added parent flex container for centering */}
+          <div className="inline-flex flex-col items-center bg-black rounded-lg p-4"> {/* Inner container */}
+            <p className="text-xl text-white mb-2">Interact with the brain</p>
+            <div className="animate-bounce">
+              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 48" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7 7 7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 30l7 7 7-7" />
+              </svg>
+            </div>
           </div>
+        </div>
+          </div>
+
         </section>
+
+        {/* Interaction Prompt Section */}
+       
 
         {/* 3D Brain Model Section */}
         <section className="h-screen flex justify-center items-center m-0 p-0"> {/* Removed margin and padding */}
@@ -145,7 +160,7 @@ export default function Home() {
             style={{ pointerEvents: "none"}}
           >
             {isCreativeHovering ? (
-              <p className="relative bg-gradient-to-r from-red-700 to-black text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-2xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
+              <p className="relative bg-gradient-to-r from-red-900 to-black text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-2xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
                 Double Click to view Creative Experiences
               </p>
             ) : null}
@@ -158,7 +173,7 @@ export default function Home() {
               // <p className="bg-gradient-to-r from-black to-green-800 text-white p-6 rounded-2xl shadow-2xl transform transition-all duration-300 max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide hover:scale-105 hover:shadow-lg cursor-pointer">
               // Double Click to view Technical Experiences
               // </p>
-              <p className="relative bg-gradient-to-r from-black to-green-700 text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
+              <p className="relative bg-gradient-to-r from-black to-green-900 text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
                 {/* <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-teal-500 to-green-500 opacity-30 blur-xl animate-pulse"></span> */}
                 Double Click to view Technical Experiences
               </p>
