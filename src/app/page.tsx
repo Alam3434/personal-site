@@ -7,7 +7,6 @@ import { OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three-stdlib";
 import { useLoader } from "@react-three/fiber";
 import { useRouter } from 'next/navigation';
-import * as THREE from 'three';  // Import THREE for access to THREE.Event
 
 
 
