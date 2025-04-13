@@ -36,7 +36,7 @@ const projects = [
   {
     title: "X-Wing vs Death Star - 3D Space Shooter",
     description: "A 3D space shooter game where players pilot an X-Wing fighter to destroy the Death Star, inspired by Star Wars: Episode IV. Built using Three.js, the game features smooth flight mechanics, laser combat, and a dynamic 3D environment. Engage in thrilling space battles with realistic physics and basic explosions.",
-    imageUrl: "/assets/Projects/3dSpaceGame.png",
+    imageUrl: "/assets/Projects/3DSpaceGame.png",
     technologies: ["Three.js", "JavaScript", "HTML5",  "CSS3"],
     githubUrl: "https://github.com/Alam3434/3D-SpaceGame",
   },
@@ -57,7 +57,7 @@ const experiences = [
       "Implemented an alert page that compiles all alarming telemetry as cards, visualizing their time-series data for investigation",
       'Wrote a Python program to automatically log orbital passes of Themis spacecrafts in InfluxDB using Systemd units.',
     ],
-    technologies: ['React', 'Grafana', 'MongoDB', 'Docker'],
+    technologies: ['React','InfluxDB', 'Grafana', 'Docker'],
   },
   {
     title: 'Software Engineer',
@@ -70,7 +70,7 @@ const experiences = [
       'Enhanced data collection efficiency by transitioning synchronous loop structures to asynchronous coroutines using Asyncio.',
       'Developed interactive 3D animations of spacecraft trajectories with NASA\’s Spice-enhanced Cosmographia, enhancing real-time visualizations, precise mission simulations for aerospace evaluations and external education.',
     ],
-    technologies: ['React', 'InfluxDB', 'SystemD'],
+    technologies: ['React', 'MongoDB', 'SystemD'],
   },
   {
     title: 'Contract Software Engineer',
@@ -84,7 +84,7 @@ const experiences = [
       'Developed an algorithm to determine the “Interesting” tags throughout the song using time-series data from Musicube.',
       'Converted and normalized the data to fit the graph components in Typescript React, along with auto tag suggest algorithm.',
     ],
-    technologies: ['React', 'Grafana'],
+    technologies: ['React', 'Musicube'],
   },
   {
     title: 'Contract Project Manager',

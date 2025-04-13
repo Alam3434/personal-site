@@ -160,7 +160,7 @@ export default function Home() {
             style={{ pointerEvents: "none"}}
           >
             {isCreativeHovering ? (
-              <p className="relative bg-gradient-to-r from-red-900 to-black text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-2xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
+              <p className="relative bg-gradient-to-r from-red-900 to-black text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
                 Double Click to view Creative Experiences
               </p>
             ) : null}
@@ -170,9 +170,6 @@ export default function Home() {
             style={{ pointerEvents: "none" }}
           >
             {isMatrixHovering ? (
-              // <p className="bg-gradient-to-r from-black to-green-800 text-white p-6 rounded-2xl shadow-2xl transform transition-all duration-300 max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide hover:scale-105 hover:shadow-lg cursor-pointer">
-              // Double Click to view Technical Experiences
-              // </p>
               <p className="relative bg-gradient-to-r from-black to-green-900 text-white p-6 rounded-xl shadow-lg max-w-xs whitespace-normal text-center font-semibold text-xl tracking-wide transform transition-all duration-300 hover:scale-110 hover:shadow-2xl overflow-hidden">
                 {/* <span className="absolute inset-0 bg-gradient-to-r from-blue-400 via-teal-500 to-green-500 opacity-30 blur-xl animate-pulse"></span> */}
                 Double Click to view Technical Experiences
